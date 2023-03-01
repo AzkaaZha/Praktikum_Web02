@@ -106,8 +106,8 @@
     </table>
     </div>
     <?php } ?>
-    <br><br><br><br>
-    <footer class="bg-warning" style="height:50px">
+    
+    <footer class="bg-warning" style="height:50px; margin-top:118px">
         <div class="container">
             <div class="row">
                 <div class="col-12">
