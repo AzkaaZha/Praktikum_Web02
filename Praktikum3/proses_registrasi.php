@@ -7,7 +7,7 @@ $program_studi = [
     "BD" => "Bisnis Digital",
 ];
 
-$skill = [
+$skills = [
     "HTML" => 10,
     "CSS" => 10,
     "JavaScript" => 20,

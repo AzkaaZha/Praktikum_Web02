@@ -10,8 +10,8 @@
     <title>Form Registrasi</title>
 </head>
 <body>
-    <div class="container">
-        <h2 style="margin-top: 15px;">Form Input IT Club GDSC</h2>
+    <div class="container" >
+        <h2 style="margin-top: 15px; text-align:center; margin-bottom:20px">Form Input IT Club GDSC</h2>
         <form method="POST">
         <div class="form-group row">
             <label for="nim" class="col-4 col-form-label">NIM</label> 
@@ -88,10 +88,10 @@
         <div class="form-group row">
             <label class="col-4">Skill Progamming</label> 
             <div class="col-8">
-                <?php foreach ($skill as $key => $value) { ?>
+                <?php foreach ($skills as $skill => $value) { ?>
                     <div class="custom-control custom-checkbox custom-control-inline">
-                        <input name="skill[]" id="<?= $key ?>" type="checkbox" class="custom-control-input" value="<?= $key; ?>"> 
-                        <label for="<?= $key ?>" class="custom-control-label"><?= $key ?></label>
+                        <input name="skill[]" id="<?= $skill ?>" type="checkbox" class="custom-control-input" value="<?= $skill; ?>"> 
+                        <label for="<?= $skill ?>" class="custom-control-label"><?= $skill ?></label>
                     </div>
                 <?php } ?>
             </div>
@@ -103,37 +103,72 @@
         </div>
         </form>
         <hr>
-        <table class="table table-bordered">
-            <tr class="table-success text-uppercase text-center">
-                <th>NIM</th>
-                <th>Nama</th>
-                <th>Email</th>
-                <th>Jenis Kelamin</th>
-                <th>Domisili</th>
-                <th>Program Studi</th>
-                <th>Skill</th>
-            </tr>
-            <?php
-                if(isset($_POST['submit'])){
+            <table class="table table-bordered">
+                <tr class="table-primary text-uppercase">
+                    <th>NIM</th>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Program Studi</th>
+                    <th>Domisili</th>
+                    <th>Skill</th>
+                    <th>Skor</th>
+                    <th>Kategori</th>
+                </tr>
+                <?php
+                if (isset($_POST['submit'])) {
                     $nim = $_POST['nim'];
                     $nama = $_POST['nama'];
                     $email = $_POST['email'];
                     $jenis_kelamin = $_POST['jenis_kelamin'];
+                    $program_studi = $_POST['program_studi'];
                     $domisili = $_POST['domisili'];
-                    $program_studi = $_POST['program_studi'];  
-                    $skill = $_POST['skill'];
-            ?>
-            <tr class="table-warning text-center">
-                <td><?= $nim; ?></td>
-                <td><?= $nama; ?></td>
-                <td><?= $email; ?></td>
-                <td><?= $jenis_kelamin; ?></td>
-                <td><?= $domisili; ?></td> 
-                <td><?= $program_studi; ?></td>
-                <td><?php foreach ($skill as $skill){echo $skill . '<br>';}; ?></td>
-            </tr>
-            <?php  } ?>
-        </table>
+                ?>
+                    <tr class="text-center">
+                        <td><?= $nim ?></td>
+                        <td><?= $nama ?></td>
+                        <td><?= $email ?></td>
+                        <td><?= $jenis_kelamin ?></td>
+                        <td><?= $program_studi ?></td>
+                        <td><?= $domisili ?></td>
+                        <td>
+                            <?php
+                            $skor = 0;
+                            if (isset($_POST['skill'])) {
+                                foreach ($_POST['skill'] as $skill) {
+                                    foreach ($skills as $key => $value) {
+                                        if ($skill == $key) {
+                                            $skor  += $value;
+                                        }
+                                    }
+                                    echo $skill . "<br>";
+
+                                }
+                            }
+                            ?>
+                        </td>
+                        <td><?= $skor ?></td>
+                        <td>
+                            <?php
+                            if ($skor == 0) {
+                                echo "Tidak Lulus";
+                            } elseif ($skor > 0 && $skor <= 40) {
+                                echo "Kurang";
+                            } elseif ($skor > 40 && $skor <= 60) {
+                                echo "Cukup";
+                            } elseif ($skor > 60 && $skor <= 80) {
+                                echo "Baik";
+                            } elseif ($skor > 80 && $skor <= 100) {
+                                echo "Sangat Baik";
+                            } else {
+                                echo "errror";
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </table>
+
     </div>
 </body>
 </html>
