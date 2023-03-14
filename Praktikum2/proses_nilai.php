@@ -1,13 +1,13 @@
 <?php
 // Variabel
-$nama = $_GET['name'];
-$matkul = $_GET['matkul'];
-$UTS = $_GET['UTS'];
-$UAS = $_GET['UAS'];
-$TUGAS = $_GET['TUGAS'];
-
-// Nilai Akhir
-$total_nilai = ($UTS + $UAS + $TUGAS) / 3;
+if (isset($_GET['submit'])) {
+    $nama = $_GET['name'];
+    $matkul = $_GET['matkul'];
+    $UTS = $_GET['UTS'];
+    $UAS = $_GET['UAS'];
+    $TUGAS = $_GET['TUGAS'];
+    $total_nilai = ($UTS + $UAS + $TUGAS) / 3;
+}
 
 // Keterangan Lulus
 if ($total_nilai > 75) {
@@ -16,5 +16,3 @@ if ($total_nilai > 75) {
 else {
     $keterangan = "TIDAK LULUS";
 }
-
-?>
