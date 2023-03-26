@@ -15,7 +15,7 @@ require_once 'dbkoneksi.php';
 
 <table class="table table-striped">
     <tbody>
-        <tr><td>ID</td><td><?=$row['id']?></td></tr>
+        <tr>  <td>ID</td><td><?=$row['id']?></td></tr>
         <tr>  <td>Kode</td><td><?=$row['kode']?></td></tr>
         <tr>   <td>Nama Produk</td><td><?=$row['nama']?></td></tr>
         <tr>   <td>Harga Jual</td><td><?=$row['harga_jual']?></td></tr>
