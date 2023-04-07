@@ -82,7 +82,7 @@
                 </div> 
                 <input id="tinggi_badan" name="tinggi_badan" placeholder="Masukkan Tinggi Badan" type="text" class="form-control" required="required"> 
                 <div class="input-group-append">
-                <div class="input-group-text">m</div>
+                <div class="input-group-text">Cm</div>
                 </div>
             </div>
             </div>
@@ -112,6 +112,7 @@
                         $jenis_kelamin = $_POST['jenis_kelamin'];
                         $berat_badan = $_POST['berat_badan'];
                         $tinggi_badan = $_POST['tinggi_badan'];
+                        $tinggi_badan = $tinggi_badan / 100;
 
                         $bmi = new Bmi($nama, $umur, $jenis_kelamin, $berat_badan, $tinggi_badan);
                         $bmi->hasilBmi();
