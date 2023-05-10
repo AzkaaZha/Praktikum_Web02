@@ -25,8 +25,12 @@ Route::get('/kabar', function () {
     return view('kondisi');
    });
 
-   
    Route::get('/nilai', function () {
     return view('nilai');
    });
+
+   Route::get('/tes_kesehatan', function () {
+    return view('tes_kesehatan');
+   });
+
    
