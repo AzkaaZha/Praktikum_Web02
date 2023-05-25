@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrasiAnggotaController;
 use App\Http\Controllers\PeminjamanBukuController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DaftarBukuController;
+use App\Http\Controllers\DaftarAnggotaController;
+use App\Http\Controllers\FormBukuController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,4 +55,13 @@ Route::get('/kabar', function () {
    //Praktikum 10
    Route::get('/dashboard', 
    [DashboardController::class, 'index']);
+
+   Route::get('/daftar_buku', 
+   [DaftarBukuController::class, 'index']);
+
+   Route::get('/daftar_anggota', 
+   [DaftarAnggotaController::class, 'index']);
+
+   Route::get('/form_buku', 
+   [FormBukuController::class, 'index']);
    
