@@ -24,13 +24,13 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url('book/daftar_buku')}}">
+          <a class="nav-link" href="{{url('/daftar_buku')}}">
             <span class="menu-title">Daftar Buku</span>
             <i class="mdi mdi-book-open-page-variant menu-icon"></i>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{url('member/daftar_anggota')}}">
+          <a class="nav-link" href="{{url('/daftar_anggota')}}">
             <span class="menu-title">Daftar Anggota</span>
             <i class="mdi mdi-folder-account menu-icon"></i>
           </a>

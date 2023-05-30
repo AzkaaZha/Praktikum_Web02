@@ -8,6 +8,7 @@ use App\Http\Controllers\DaftarBukuController;
 use App\Http\Controllers\DaftarAnggotaController;
 use App\Http\Controllers\FormBukuController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,12 +57,12 @@ Route::get('/kabar', function () {
    Route::get('/dashboard', 
    [DashboardController::class, 'index']);
 
-   Route::get('/daftar_buku', 
+   Route::get('book/daftar_buku', 
    [DaftarBukuController::class, 'index']);
 
-   Route::get('/daftar_anggota', 
+   Route::get('member/daftar_anggota', 
    [DaftarAnggotaController::class, 'index']);
 
-   Route::get('/form_buku', 
+   Route::get('book/form_buku', 
    [FormBukuController::class, 'index']);
    
