@@ -9,7 +9,7 @@
           <i class="mdi mdi-book"></i>
         </span> Daftar Buku
       </h3><br>
-      <a href="{{url('book/form_buku')}}"><button type="button" class="btn btn-gradient-primary btn-fw" >+ Tambah Buku</button></a><br>
+      <a class="btn btn-gradient-primary btn-fw" href="{{url('book/create')}}">  + Tambah Buku</a><br>
     </div><br>
     <div class="col-lg-12 stretch-card">
         <div class="card">
@@ -34,9 +34,13 @@
                     <td> {{ $book->title }} </td>
                     <td> {{ $book->stok }} </td>
                     <td> 
-                      <a class="btn btn-primary" href="">View</a>
-                      <a class="btn btn-warning" href="">Edit</a>
-                      <a class="btn btn-danger" href="">Delete</a></td>
+                      <a class="btn btn-primary btn-sm" href="">View</a>
+                      <a class="btn btn-warning btn-sm" href="">Edit</a>
+                      <form class="d-inline" action="{{ url('book/destroy', $book->id) }}" method="post">
+                      @csrf
+                      @method('delete')
+                      <button  class="btn btn-danger btn-sm" type="submit" onclick="return confirmDelete(event)">Delete</button>
+                      </form>
                   </tr>
                 @endforeach
               </tbody>
@@ -47,3 +51,11 @@
 </div>
 
 @endsection
+<script>
+  function confirmDelete(event) {
+    if(!confirm("Apakah anda yakin ingin menghapus data?")){
+      event.preventDefault()
+      return false;
+    }
+  }
+</script>

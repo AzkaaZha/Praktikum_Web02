@@ -63,6 +63,24 @@ Route::get('/kabar', function () {
    Route::get('member/daftar_anggota', 
    [DaftarAnggotaController::class, 'index']);
 
-   Route::get('book/form_buku', 
-   [FormBukuController::class, 'index']);
-   
+   //Praktikum 12
+   Route::get('book/create', 
+   [DaftarBukuController::class, 'create']);
+
+   Route::post('book/store', 
+   [DaftarBukuController::class, 'store']);
+
+   Route::delete('book/destroy/{id}', 
+   [DaftarBukuController::class, 'destroy']);
+
+   Route::get('member/create', 
+   [DaftarAnggotaController::class, 'create']);
+
+   Route::post('member/store', 
+   [DaftarAnggotaController::class, 'store']);
+
+   Route::delete('member/destroy/{id}', 
+   [DaftarAnggotaController::class, 'destroy']);
+
+
+

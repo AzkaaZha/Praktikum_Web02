@@ -23,7 +23,7 @@ class DaftarAnggotaController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.member.create');
     }
 
     /**
@@ -31,7 +31,18 @@ class DaftarAnggotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Validasi form input
+        $validated = $request->validate([
+            'name' => 'required|min:5|max:25',
+            'email' => 'required|email',
+            'gender' => 'required|in:Pria,Wanita',
+            'status' => 'required|min:5|max:25',
+            'address' => 'required|min:5|max:25',
+        ]);
+
+        //Mengirim Data Ke Model
+        Member::create($validated);
+        return redirect('/member/daftar_anggota');
     }
 
     /**
@@ -63,6 +74,10 @@ class DaftarAnggotaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //Mencari Data Berdasarkan ID
+        $member = Member::find($id);
+        $member->delete();
+        return redirect('/member/daftar_anggota');
+    
     }
 }

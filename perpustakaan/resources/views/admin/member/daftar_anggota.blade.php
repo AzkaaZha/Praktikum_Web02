@@ -9,7 +9,7 @@
           <i class="mdi mdi-book"></i>
         </span> Daftar Anggota
       </h3><br>
-      <button type="button" class="btn btn-gradient-primary btn-fw">+ Tambah Anggota</button><br>
+      <a class="btn btn-gradient-primary btn-fw" href="{{url('member/create')}}">  + Tambah Anggota</a><br>
     </div><br>
     <div class="col-lg-12 stretch-card">
         <div class="card">
@@ -39,9 +39,14 @@
                   <td>{{ $member->gender }}</td>
                   <td>{{ $member->status }}</td>
                   <td>{{ $member->address }}</td>
-                  <td> <a class="btn btn-primary" href="">View</a>
-                    <a class="btn btn-warning" href="">Edit</a>
-                    <a class="btn btn-danger" href="">Delete</a></td>
+                  <td> 
+                    <a class="btn btn-primary btn-sm" href="">View</a>
+                    <a class="btn btn-warning btn-sm" href="">Edit</a>
+                    <form class="d-inline" action="{{ url('member/destroy', $member->id) }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button  class="btn btn-danger btn-sm" type="submit" onclick="return confirmDelete(event)">Delete</button>
+                    </form>
                 </tr>
                 @endforeach
               </tbody>
@@ -50,5 +55,12 @@
         </div>
       </div>
 </div>
-
 @endsection
+<script>
+  function confirmDelete(event) {
+    if(!confirm("Apakah anda yakin ingin menghapus data?")){
+      event.preventDefault()
+      return false;
+    }
+  }
+</script>
