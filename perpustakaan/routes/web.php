@@ -82,5 +82,22 @@ Route::get('/kabar', function () {
    Route::delete('member/destroy/{id}', 
    [DaftarAnggotaController::class, 'destroy']);
 
+   //Praktikum 13
+   Route::get('book/edit/{id}', 
+   [DaftarBukuController::class, 'edit']);
 
+   Route::put('book/update/{id}', 
+   [DaftarBukuController::class, 'update']);
+
+   Route::get('book/show/{id}', 
+   [DaftarBukuController::class, 'show']);
+
+   Route::get('member/edit/{id}', 
+   [DaftarAnggotaController::class, 'edit']);
+
+   Route::put('member/update/{id}', 
+   [DaftarAnggotaController::class, 'update']);
+
+   Route::get('member/show/{id}', 
+   [DaftarAnggotaController::class, 'show']);
 

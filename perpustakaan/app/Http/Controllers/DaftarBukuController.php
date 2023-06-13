@@ -49,7 +49,11 @@ class DaftarBukuController extends Controller
      */
     public function show(string $id)
     {
-        //
+         //Mencari Data Berdasarkan ID
+         $book = Book::find($id);
+         return view('admin.book.show', [
+             'book' => $book
+         ]);
     }
 
     /**
@@ -57,7 +61,11 @@ class DaftarBukuController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //Mencari Data Berdasarkan ID
+        $book = Book::find($id);
+        return view('admin.book.edit', [
+            'book' => $book
+        ]);
     }
 
     /**
@@ -65,7 +73,23 @@ class DaftarBukuController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Mencari Data Berdasarkan ID
+        $book = Book::find($id);
+
+        //Validasi form input
+        $validated = $request->validate([
+            'title' => 'required|min:5|max:25',
+            'isbn' => 'required|integer',
+            'stok' => 'required|integer',
+        ]);
+
+        //Update Data
+        // $book->title = $request->input('title');
+        // $book->isbn = $request->input('isbn');
+        // $book->stok = $request->input('stok');
+        // $book->save();
+        $book->update($validated);
+        return redirect('/book/daftar_buku')->with('success', 'Data Buku Berhasil Diubah');
     }
 
     /**

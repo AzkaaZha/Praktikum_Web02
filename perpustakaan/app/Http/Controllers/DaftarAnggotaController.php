@@ -50,7 +50,11 @@ class DaftarAnggotaController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //Mencari Data Berdasarkan ID
+        $member = Member::find($id);
+        return view('admin.member.show', [
+            'member' => $member
+        ]);
     }
 
     /**
@@ -58,7 +62,11 @@ class DaftarAnggotaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //Mencari Data Berdasarkan ID
+        $member = Member::find($id);
+        return view('admin.member.edit', [
+            'member' => $member
+        ]);
     }
 
     /**
@@ -66,7 +74,21 @@ class DaftarAnggotaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Mencari Data Berdasarkan ID
+        $member = Member::find($id);
+
+        //Validasi form input
+        $validated = $request->validate([
+            'name' => 'required|min:5|max:25',
+            'email' => 'required|email',
+            'gender' => 'required|in:Pria,Wanita',
+            'status' => 'required|min:5|max:25',
+            'address' => 'required|min:5|max:25',
+        ]);
+
+         //Update Data
+        $member->update($validated);
+        return redirect('/member/daftar_anggota');
     }
 
     /**
